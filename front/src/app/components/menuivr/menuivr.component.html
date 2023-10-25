@@ -1,0 +1,88 @@
+<div class="barra">
+  <p>
+    <mat-toolbar color="primary">
+      <button mat-icon-button *ngIf="sidenav.mode==='over'" (click)=sidenav.toggle()>
+        <mat-icon *ngIf="!sidenav.opened"> menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+
+      </button>
+
+      <span class="example-spacer"> IVR Disigner</span>
+
+    </mat-toolbar>
+  </p>
+</div>
+
+<!--Este es la barra lateral-->
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class="mat-elevation-z9" #sidenav="matSidenav" mode="side" opened>
+    <span> <img class="avatar mat-elevation-z20" src="./assets/log.png"> </span>
+
+
+    <!-- <div class="">
+      <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+        <mat-chip-option *ngFor="let chip of availableColors" [color]="chip.color" id="chips"
+          (selectionChange)="llamarmodal(chip.name)">
+
+          <p class="nombre"> {{chip.name}}</p>
+        </mat-chip-option>
+      </mat-chip-listbox>
+    </div> -->
+    <mat-divider></mat-divider>
+   
+    <button mat-button class="menu-button" (click)="audio(open)">
+       <h4> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16ZM4.79 5.093 8 7.386V5.5a.5.5 0 0 1 .79-.407l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 8 10.5V8.614l-3.21 2.293A.5.5 0 0 1 4 10.5v-5a.5.5 0 0 1 .79-.407Z"/>
+      </svg> Archivo de audio</h4>
+    </button>
+    <mat-divider></mat-divider>
+   
+    <button mat-button class="menu-button" (click)="texto(open)">
+      <h4><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-fill" viewBox="0 0 16 16">
+        <path d="M2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+      </svg> Texto</h4>
+   </button>
+
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/home">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-sidenav>
+
+  <!--Pagina -->
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center flex-column menu-content">
+          <div class="menu-title justify-content-center d-flex">
+            <h2 class=".fs-8, display-15 justify-content-center  ">Diseñe un sistema de voz interactivo</h2>
+          </div>
+          <div class="gap-5 d-flex justify-content-center azul">
+            <mat-form-field>
+              <mat-label>Seleccione una</mat-label>
+              <mat-select >
+                <mat-option *ngFor="let opcion of opciones" [value]="opcion" class="selectoption" (click)="llamarmodal(opcion.name)" >
+                  {{opcion.name}}
+                </mat-option>
+              </mat-select>
+            
+            </mat-form-field>
+            <!--
+            <mat-form-field>
+              <mat-label>Elija una opcion</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let menus2 of menu2" [value]="menus2.value">
+                  {{menus2.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> --->
+          </div>
+        </div>
+      </div>
+       <div  style="margin-top: 15rem;text-align: end; margin-right: 5px; margin-inline-end: 30px;">
+       <button type="button" class="btn btn-dark" style="margin-right: 8px;" routerLink="/guardar" >Guardar</button>
+       <button type="button" class="btn btn-danger" style="margin-left: 5px;">Cancelar</button>
+       </div>
+        </div>>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title> Configuracion de texto</h1>
+<mat-divider></mat-divider>
+
+
+<div class="custom-tab">
+    <mat-form-field class="example-full-width">
+        <mat-label>Introduce un mensage</mat-label>
+        <textarea matInput placeholder="Gracias por llamar"></textarea>
+      </mat-form-field>
+    </div>
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary"(click)="close()">Close</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+</div>

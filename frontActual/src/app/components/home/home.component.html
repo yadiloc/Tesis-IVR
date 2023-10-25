@@ -1,0 +1,46 @@
+<div class="barra">
+    <p>
+    <mat-toolbar color="">
+      
+      <button mat-icon-button *ngIf="sidenav.mode==='over'" (click)=sidenav.toggle()>
+        <mat-icon *ngIf="!sidenav.opened"> menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+
+      </button>
+  
+      <span class="example-spacer"> IVR Disigner</span>
+  
+    </mat-toolbar>
+  </p>
+  </div>
+
+
+  <!--Este es la barra lateral-->
+<mat-sidenav-container class="example-container, ml-3">
+    <mat-sidenav  #sidenav="matSidenav" mode="side" opened>
+      <span> <img class="avatar mat-elevation-z20" src="./assets/log.png"> </span>
+      
+      <mat-divider></mat-divider>
+      <button mat-button class="menu-button" routerLink="/menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+          <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+        </svg> Diseñar IVR
+      </button>
+    
+
+    </mat-sidenav>
+
+
+ <!--Pagina -->
+ <mat-sidenav-content class="px-3">
+    <app-tablaivr class=""></app-tablaivr>
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+
+  
+
+
+
+
+

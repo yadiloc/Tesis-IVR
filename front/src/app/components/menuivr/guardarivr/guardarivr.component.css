@@ -1,0 +1,53 @@
+.boton{
+    margin-top: 1%;
+    margin-left: 1%;
+ 
+ 
+}
+
+.child{
+margin-top: 50%;
+
+}
+
+.mat-mdc-standard-chip{
+    --mdc-chip-elevated-container-color: #fffefe;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+mat-sidenav-container{
+    height:auto;
+    width: auto;
+}
+mat-toolbar{
+    background:#99E89D !important;
+    color: black;
+}
+
+mat-sidenav{
+    margin: 10px;
+    width: 200px;
+    border-right: none;
+    background-color:#99E89D ;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+
+mat-divider{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: white;
+}
+
+.azul{
+    width: 80%;
+    height: 80%;
+    margin-top: 5px;
+    margin-left: 15px;
+    padding-left: 5px;
+    text-align: center;
+}
