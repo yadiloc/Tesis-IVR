@@ -5,8 +5,11 @@ from .viewset import *
 
 router = routers.SimpleRouter()
 router.register('ivr', IvrViewSet)
-router.register('servicio', ServicioViewSet)
+router.register('tiempoespera', TiempoEsperaViewSet)
 router.register('consulta', ConsultaViewSet)
+router.register('audio', AudioViewSet)
+router.register('texto', TextoViewSet)
+router.register('transferencia', TransferenciaViewSet)
 urlpatterns = router.urls
 
 

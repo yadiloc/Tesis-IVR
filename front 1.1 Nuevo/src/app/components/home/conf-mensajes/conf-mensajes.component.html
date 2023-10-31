@@ -1,21 +1,17 @@
 <h1 mat-dialog-title> Configuracion de Mensajes</h1>
 <div mat-dialog-content>
+ <form action="POST"> 
+ 
+  <mat-label>Mensaje</mat-label>
+  <input  [(ngModel)]="mensaje" name="mensaje">
 
-
-      <mat-tab-group>
-        <mat-tab label="Mensaje">
-          <div class="custom-tab">
-            <mat-form-field class="example-full-width">
-              <mat-label>Mensaje</mat-label>
-              <textarea matInput placeholder="Gracias por llamar"></textarea>
-            </mat-form-field>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-  
-</div>
-<div mat-dialog-actions>
+      
   <button mat-flat-button color="primary" (click)="close()">Close</button>
 
-  <button mat-button [mat-dialog-close]="data" [disabled]="habilitar">Aceptar</button>
-</div>
+  <button mat-button (click)="enviarMensaje()">Aceptar</button>
+
+  
+ </form>
+    
+</div>  
+

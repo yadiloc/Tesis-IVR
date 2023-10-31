@@ -10,7 +10,6 @@ import { AudioComponent } from './audio/audio.component';
 import { FormBuilder } from '@angular/forms';
 import { AudioMensaje, IVRS, TextoMensaje } from 'src/app/interface/ivr';
 import { DialogconfirmComponent } from '../dialogconfirm/dialogconfirm.component';
-import { Alert } from 'bootstrap';
 import { ElimDiagComponent } from '../home/tablaivr/elim-diag/elim-diag.component';
 import { ConfirmService } from 'src/app/servicios/confirm.service';
 

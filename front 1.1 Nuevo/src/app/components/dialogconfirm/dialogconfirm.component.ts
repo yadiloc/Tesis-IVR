@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, Inject, NgModule } from '@angular/core';
+import { AfterViewInit, Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import * as JssonToXml from 'js2xmlparser'
 import { IVRS } from 'src/app/interface/ivr';
 import { ConfirmService } from 'src/app/servicios/confirm.service';
-import { MatFormFieldControl } from '@angular/material/form-field';
 
 
 

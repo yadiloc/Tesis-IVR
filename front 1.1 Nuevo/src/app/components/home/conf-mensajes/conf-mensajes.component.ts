@@ -1,6 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { Texto } from 'src/app/models/texto';
+import { TextoService } from 'src/app/services/texto.service';
+
 
 @Component({
   selector: 'app-conf-mensajes',
@@ -9,22 +12,18 @@ import { Observable } from 'rxjs';
 })
 export class ConfMensajesComponent {
   filteredOptions: Observable<string[]> | undefined;
-  habilitar: boolean=true;
-  constructor(
-    public dialogRef: MatDialogRef<ConfMensajesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
-  ) {
-  }
-  close(){
+  habilitar: boolean = true;
+
+  mensaje: string = ""; 
+
+  constructor(private textoService: TextoService, public dialogRef: MatDialogRef<ConfMensajesComponent>,) { }
+  close() {
     this.dialogRef.close()
   }
- // activar(){
-   // if(this.data.texto!==undefined){
-  //  this.habilitar=!this.habilitar
-  //  }
-   // else{
-  //      this.habilitar=true
-   // }
-  //  }
 
+  enviarMensaje() {
+    this.textoService.enviarTexto(this.mensaje).subscribe(() => {
+      this.dialogRef.close();
+    })
+  }
 }

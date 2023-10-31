@@ -14,7 +14,6 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { DialogbienvenidaComponent } from './components/menuivr/dialogbienvenida/dialogbienvenida.component';
-
 import { DialogtextoComponent } from './components/menuivr/dialogtexto/dialogtexto.component';
 import{MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -38,6 +37,10 @@ import { ConfMensajesComponent } from './components/home/conf-mensajes/conf-mens
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ElimDiagComponent } from './components/home/tablaivr/elim-diag/elim-diag.component';
 import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-diag.component';
+import { AudioService } from './services/audio.service';
+import { TextoService } from './services/texto.service';
+
+
 
 
 @NgModule({
@@ -57,6 +60,7 @@ import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-dia
     ConfMensajesComponent,
     ElimDiagComponent,
     ModfDiagComponent,
+  
 
   
   ],
@@ -86,7 +90,7 @@ import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-dia
     HttpClientModule,
     
   ],
-  providers: [],
+  providers: [AudioService, TextoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import {  HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Ivr } from "../components/menuivr/menuivr.component";
+import { Ivrs } from "../models/ivr.model";
 
 @Injectable({
     providedIn:"root"
@@ -10,8 +12,8 @@ export class IvrService{
 
 constructor(public http:HttpClient){}
 
-getList():Observable<any>{
-    return this.http.get(this.url);
+getList():Observable<Ivrs[]>{
+    return this.http.get<Ivrs[]>(this.url);
 
 }
  delete(id:number){

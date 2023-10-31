@@ -4,7 +4,7 @@
   Esta seguro de eliminar este archivo?
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial matChipTrailingIcon (click)="delete()">Si</button>
+  <button mat-button mat-dialog-close (click)="close()">No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="eliminarObjeto()">Si</button>
 </div>
 

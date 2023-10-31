@@ -8,15 +8,41 @@ class IvrSerializer(serializers.ModelSerializer):
         model=Ivr
         fields="__all__"
         
-class ServicioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Servicio
-        fields="__all__"
+
         
 class  ConsultaSerializer(serializers.ModelSerializer):
     class Meta:
         model=Consulta
         fields="__all__"
+
+class  AudioSerializer (serializers.ModelSerializer):
+    class Meta:
+        model=Audio
+        fields="__all__"
+
+class TextoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Texto
+        fields="__all__"
+
+class  BienvenidaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Bienvenida
+        fields="__all__"
+
+class  TransferenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Transferencia
+        fields="__all__"
+
+class  TiempoEsperaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=TiempoEspera
+        fields="__all__"
+        
+        
+        
+        
         
 
      
