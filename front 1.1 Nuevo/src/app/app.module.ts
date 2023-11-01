@@ -32,8 +32,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import  {MatListModule} from '@angular/material/list';
 import { DialogconfirmComponent } from './components/dialogconfirm/dialogconfirm.component';
-import { ConfAudioComponent } from './components/home/conf-audio/conf-audio.component';
-import { ConfMensajesComponent } from './components/home/conf-mensajes/conf-mensajes.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ElimDiagComponent } from './components/home/tablaivr/elim-diag/elim-diag.component';
 import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-diag.component';
@@ -56,12 +54,8 @@ import { TextoService } from './services/texto.service';
     ConsultasBDComponent,
     AudioComponent,
     DialogconfirmComponent,
-    ConfAudioComponent,
-    ConfMensajesComponent,
     ElimDiagComponent,
     ModfDiagComponent,
-  
-
   
   ],
   imports: [

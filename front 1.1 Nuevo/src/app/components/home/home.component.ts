@@ -1,15 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MatTableDataSource } from '@angular/material/table';
-import { DialogtextoComponent } from '../menuivr/dialogtexto/dialogtexto.component';
-import { ConfAudioComponent } from './conf-audio/conf-audio.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConfMensajesComponent } from './conf-mensajes/conf-mensajes.component';
-import { TablaivrComponent } from './tablaivr/tablaivr.component';
+import { MatDialog} from '@angular/material/dialog';
 import { AudioService } from 'src/app/services/audio.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 
 @Component({
@@ -53,39 +47,6 @@ export class HomeComponent  implements AfterViewInit {
     this.cd.detectChanges();
   }
 
-
-    
-    
-  abrirDialogo() {
-    const dialogRef = this.dialog.open(ConfAudioComponent, {
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe((datos: any) => {
-      if (datos && datos.audio) {
-        this.audioService.enviarAudio(datos.nombre, datos.audio)
-          .subscribe(
-            (response: any) => {
-              // Manejar la respuesta del backend
-              console.log('Respuesta del backend:', response);
-              // Realizar acciones adicionales según la respuesta
-            },
-           
-          );
-      }
-    });
-  }
-
-
-
-    confMensaje() {
-
-      const dialogRef = this.dialog.open(ConfMensajesComponent, {
-        width: '500px',
-    
-      })
-     
-}
 }
 
 

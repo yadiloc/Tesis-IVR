@@ -1,7 +1,0 @@
-
-<form action="POST" name="audio">
-<h1>Diálogo de Envío de Archivo</h1>
-<input type="text" placeholder="Nombre" [(ngModel)]="nombre"  name="nombre"/>
-<input type="file" accept="audio/*" (change)="seleccionarArchivo($event)" />
-<button (click)="enviarArchivo()">Enviar</button>
-</form>

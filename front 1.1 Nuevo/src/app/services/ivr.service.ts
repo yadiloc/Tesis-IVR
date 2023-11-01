@@ -1,7 +1,6 @@
 import {  HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Ivr } from "../components/menuivr/menuivr.component";
 import { Ivrs } from "../models/ivr.model";
 
 @Injectable({
