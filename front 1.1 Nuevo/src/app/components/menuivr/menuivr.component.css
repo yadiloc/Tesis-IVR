@@ -77,3 +77,13 @@ mat-divider{
 #steper{
     height: 100%;
 }
+.subtitulo{
+
+   margin-top: 1%;
+}
+
+.subtl{
+    font-size: medium;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}

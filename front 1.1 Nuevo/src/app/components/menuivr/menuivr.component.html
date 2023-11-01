@@ -90,109 +90,86 @@
             <h2 class=".fs-8, display-15 justify-content-center  ">Diseñe un sistema de voz interactivo</h2>
           </div>
           <div class="gap-5 d-flex  azul">
-            <div>
-              <mat-list>
-                <mat-list-item *ngFor="let mensaje of emptyIVRS.mensajesBienvenida">
-                  <ng-container *ngIf="mensaje.audiodata !isEmpty">
-                    {{ mensaje.audiodata}}
-
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </ng-container>
-                  <ng-container *ngIf="mensaje.texto !isEmpty">
-                    <p>{{ mensaje.texto }}</p>
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </ng-container>
-                </mat-list-item>
-
-                <mat-list-item *ngFor="let audio of emptyIVRS.audios">
-                  <ng-container *ngIf="audio.audiodata !isEmpty">
-                    Audio: {{ audio.audiodata }}
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-
-                  </ng-container>
-
-                </mat-list-item>
 
 
+            <div class="container" *ngFor="let mensaje of mostrar">
+              <div class="subtitulo">
+                <mat-list>
+                  <div *ngIf="mensaje.audiodata !isEmpty">
+                    <mat-list-item>
+                      <label class="subtl"> Audio: {{mensaje.audiodata}}</label>
+                      <button mat-button (click)="openDialog('0ms', '0ms')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                        </svg>
+                      </button>
+                    </mat-list-item>
+                    <br>
+                  </div>
+                  <div *ngIf="mensaje.tiempoEspera !isEmpty">
 
-                <mat-list-item *ngFor="let texto of emptyIVRS.textos">
-                  <ng-container *ngIf="texto.texto !isEmpty">
-                    Mensaje: {{ texto.texto }}
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </ng-container>
+                    <mat-list-item>
+                      <label class="subtl">Tiempo de espera: {{mensaje.tiempoespera}}</label>
+                      <button mat-button (click)="openDialog('0ms', '0ms')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                        </svg>
+                      </button>
+                    </mat-list-item>
+                  </div>
 
-                </mat-list-item>
+                  <br>
+                  <div *ngIf="mensaje.numerocell !isEmpty">
+                    <mat-list-item>
+                      <label class="subtl">Transfrerencia a :{{mensaje.numerocell}}- {{mensaje.audiodata}}-
+                        {{mensaje.tiempoespera}}</label>
 
+                      <button mat-button (click)="openDialog('0ms', '0ms')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                        </svg>
+                      </button>
+                    </mat-list-item>
+                  </div>
+                
+                  <br>
+                  <div *ngIf="mensaje.texto !isEmpty">
 
+                    <mat-list-item>
+                      <label class="subtl">Mensaje: {{ mensaje.texto}}</label>
+                      <button mat-button (click)="openDialog('0ms', '0ms')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
+                        </svg>
+                      </button>
+                    </mat-list-item>
+                  </div>
 
-                <mat-list-item *ngFor="let tiempo of emptyIVRS.tiemposEspera">
-                  <ng-container>
-                    Tiempo de espera: {{ tiempo}}
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </ng-container>
-
-                </mat-list-item>
-
-
-
-
-                <mat-list-item *ngFor="let transferencia of emptyIVRS.transferenciasLlamada">
-                  <ng-container *ngIf="transferenciaLLamada !isEmpty">
-
-
-                    Transeferencia a:
-                    {{ transferencia.numerocell }} - {{ transferencia.audiodata }} - {{ transferencia.tiempoespera }}
-                    <button mat-button (click)="openDialog('0ms', '0ms')">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
-                      </svg>
-                    </button>
-                  </ng-container>
-                </mat-list-item>
-
-              </mat-list>
+                </mat-list>
+              </div>
             </div>
-            
+
+
           </div>
+
         </div>
-        <div style="margin-top: 25rem;text-align: end; margin-right: 5px; margin-inline-end: 30px ;text-align: end; margin-right: 5px; margin-inline-end: 30px;">
+        <div
+          style="margin-top: 25rem;text-align: end; margin-right: 5px; margin-inline-end: 30px ;text-align: end; margin-right: 5px; margin-inline-end: 30px;">
           <button type="button" class="btn btn-dark" style="margin-right: 9px;" (click)="guardar()">Guardar</button>
           <button type="button" class="btn btn-danger" style="margin-left: 9px;" (click)="cancelar()">Cancelar</button>
         </div>
       </div>
-   
     </div>
+
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

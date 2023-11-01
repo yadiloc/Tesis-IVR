@@ -39,6 +39,7 @@ export class MenuivrComponent implements AfterViewInit {
     tiemposEspera: [],
     transferenciasLlamada: []
   };
+  mostrar:any[]=[]
 
   menuTrigger: any;
   audiodata: string = "";
@@ -74,8 +75,11 @@ export class MenuivrComponent implements AfterViewInit {
       console.log(result);
       if (result) {
         const nuevoMensaje = { texto: result.texto, audiodata: result.audiodata };
+
         this.emptyIVRS.mensajesBienvenida.push(nuevoMensaje);
-        console.log(this.emptyIVRS)
+        this.mostrar.push(nuevoMensaje)
+      
+        console.log(this.mostrar)
       }
     });
   }
@@ -91,8 +95,8 @@ export class MenuivrComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       
         this.emptyIVRS.audios.push(result)
-     
-      
+        this.mostrar.push(result)
+        console.log(this.mostrar)
     });
   }
   tiempoEspera() {
@@ -100,12 +104,16 @@ export class MenuivrComponent implements AfterViewInit {
       width: '500px',
 
       data: { tiempoespera: this.tiempoespera },
+   
+    
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
       if(result!=undefined){
         this.emptyIVRS.tiemposEspera.push(result)
+        this.mostrar.push(result)
+        console.log(this.mostrar)
       }
     });
   }
@@ -121,6 +129,8 @@ export class MenuivrComponent implements AfterViewInit {
       if(result!=true){
         console.log(result)
         this.emptyIVRS.transferenciasLlamada.push(result)
+        this.mostrar.push(result)
+        console.log(this.mostrar)
       }
      
     });
@@ -133,6 +143,8 @@ export class MenuivrComponent implements AfterViewInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       this.emptyIVRS.textos.push(result)
+      this.mostrar.push(result)
+      console.log(this.mostrar)
     
     })
   }
