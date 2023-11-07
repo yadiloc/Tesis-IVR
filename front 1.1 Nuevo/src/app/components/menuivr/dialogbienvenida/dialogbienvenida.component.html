@@ -1,10 +1,11 @@
-<h1 mat-dialog-title> Configuracion de Bienvenida</h1>
+
 
  <div mat-dialog-content>
  
   <mat-tab-group>
    
-    <mat-tab label="Introducir">
+    <mat-tab label="Configuracion de Bienvenida">
+      <br/>
       
     <mat-tab-group>
         <mat-tab label="Mensaje"> 
@@ -18,15 +19,15 @@
             <div class="custom-tab">
             <mat-form-field class="example-full-width">
                 <mat-label></mat-label>
-                <textarea matInput placeholder="Gracias por llamar" [(ngModel)]="data.texto" (change)="activar()"></textarea>
+                <textarea matInput placeholder="Gracias por llamar" [(ngModel)]="bienvenida.mess" (change)="activar()"></textarea>
               </mat-form-field>
             </div>
         </mat-tab>
         <mat-tab label="Audio">    
             <div class="custom-tab-audio" >
             <button type="button" mat-raised-button (click)="fileInput.click()" class="filebuton">Escoge un archivo</button>
-            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" [(ngModel)]="data.audiodata" >
-                <h4>{{data.audiodata}}</h4>
+            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" [(ngModel)]="bienvenida.musica" >
+                <h4>{{bienvenida.musica}}</h4>
                 <div class="controlsaudio" *ngIf="variablenula">
                 <button mat-raised-button color="primary" (click)="playAudio()"[disabled]="!controlaudio"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -41,16 +42,14 @@
    
       </mat-tab-group>
     </mat-tab>
-   
-    
     </mat-tab-group>
 
  </div>
 
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary"(click)="close()">Close</button>
+    <button mat-button (click)="close()">Close</button>
    
-    <button mat-button [mat-dialog-close]="data"cdkFocusInitial (click)="stopAudio()" [disabled]="activo">Aceptar</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="bienvenida"  (click)="stopAudio()" [disabled]="activo">Aceptar</button>
 </div>
 
 

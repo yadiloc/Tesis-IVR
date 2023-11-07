@@ -1,11 +1,11 @@
-<h1 mat-dialog-title> Configuracion de Mensajes</h1>
+
 <div mat-dialog-content>
   <mat-tab-group>
     <mat-tab label="Mensaje">
       <div class="custom-tab">
         <mat-form-field class="example-full-width">
           <mat-label>Mensaje</mat-label>
-          <textarea matInput placeholder="Gracias por llamar" [(ngModel)]="data.texto" (change)="activar()"></textarea>
+          <textarea matInput placeholder="Gracias por llamar" [(ngModel)]="textomensaje.contenido" (change)="activar()"></textarea>
         </mat-form-field>
       </div>
     </mat-tab>
@@ -13,7 +13,7 @@
 
 </div>
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" (click)="close()">Close</button>
+  <button mat-flat-button  (click)="close()">Close</button>
 
-  <button mat-button [mat-dialog-close]="data" [disabled]="habilitar">Aceptar</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="textomensaje" [disabled]="habilitar">Aceptar</button>
 </div>

@@ -18,6 +18,8 @@ getList():Observable<Ivrs[]>{
  delete(id:number){
   return this.http.delete(this.url+id+"/")
  }
-
+ post(data:any){
+    return this.http.post(this.url, data)
+ }
 
 }

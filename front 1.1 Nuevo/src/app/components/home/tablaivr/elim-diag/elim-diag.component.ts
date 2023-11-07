@@ -12,6 +12,7 @@ import { IvrService } from 'src/app/services/ivr.service';
 export class ElimDiagComponent {
   @Output() tablaIvr= new EventEmitter();
   
+  
 
 
   constructor(public dialogRef: MatDialogRef<ElimDiagComponent> , private deleteService:IvrService, @Inject(MAT_DIALOG_DATA) public data:{id:number}){ }

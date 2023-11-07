@@ -1,13 +1,9 @@
 export class Audios{
     audios : File ;
-    nombre: string;
+    idivr: number;
   
-
-constructor(audios : File ,  nombre: string ){
-    this.audios=audios,
-    this.nombre=nombre
-
-
+constructor(audios : File, idivr:number){
+    this.audios=audios;
+    this.idivr=idivr
 }
-  
 }

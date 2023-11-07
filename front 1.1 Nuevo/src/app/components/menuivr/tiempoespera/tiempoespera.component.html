@@ -1,10 +1,10 @@
-<h1 mat-dialog-title> Tiempo de espera </h1>
+
 <div mat-dialog-content >
 <mat-tab-group>
-    <mat-tab label="Introducir"><h4 mat-dialog-title> Indique que tiempo tiene que transcurrir antes de finalizar la llamada</h4>
+    <mat-tab label="Tiempo de espera"><h4 mat-dialog-title> Indique que tiempo tiene que transcurrir antes de finalizar la llamada</h4>
         <label for="">Introduzca el tiempo de espera</label>
         <mat-divider></mat-divider>
-        <input type="number" id="" [(ngModel)]="data.tiempoespera" (change)="evaluar()"></mat-tab>
+        <input type="number" id="" [(ngModel)]=" timemensaje.tiempo" (change)="evaluar()"></mat-tab>
      
 </mat-tab-group>
 </div>
@@ -13,7 +13,7 @@
 
 
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary"(click)="close()">Close</button>
+    <button  mat-button  (click)="close()">Close</button>
    
-    <button mat-button [mat-dialog-close]="data.tiempoespera" cdkFocusInitial [disabled]="estado" >Aceptar</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="timemensaje"[disabled]="estado" >Aceptar</button>
 </div>

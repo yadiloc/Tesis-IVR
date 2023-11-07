@@ -2,7 +2,7 @@ import { Component, ElementRef, Inject } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Audios } from 'src/app/models/audio';
 
 @Component({
   selector: 'app-audio',
@@ -22,7 +22,7 @@ export class AudioComponent {
   revisor: boolean=true;
   constructor(
     public dialogRef: MatDialogRef<AudioComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public  audiomensaje: Audios,
   ) {
 
   }
@@ -32,29 +32,29 @@ export class AudioComponent {
       this.dialogRef.close(true);  
   }
   
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
+  // ngOnInit() {
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map(value => this._filter(value || '')),
+  //   );
+  // }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
+
+  audios !:File;
   activar(){
-    if(this.data.texto!==undefined && this.data.audiodata===''){
+    if(this.audiomensaje!==undefined ){
     this.activo=!this.activo
     }
-    else if(this.data.texto==='' && this.data.audiodata!==undefined){
-    this.activo=!this.activo
-    }
-    else{
+    else
       this.activo=true
     }
-    }
+   
+
     onFileSelected(event: Event) {
       this.activar()
       const target = event.target as HTMLInputElement;
@@ -93,7 +93,5 @@ export class AudioComponent {
     }
   }
 
+
 }
-
-
-

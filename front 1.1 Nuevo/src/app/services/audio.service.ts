@@ -1,40 +1,34 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Audios } from "../models/audio";
 
 @Injectable({
-    providedIn:"root"
+    providedIn: "root"
 })
-export class AudioService{
-    private url="http://127.0.0.1:8000/audio/";
+export class AudioService {
+    private url = "http://127.0.0.1:8000/audio/";
 
-constructor(private http:HttpClient){} 
+    constructor(private http: HttpClient) { }
 
-getList():Observable<any>{
-    return this.http.get(this.url);
+    getList(): Observable<any> {
+        return this.http.get(this.url);
 
-}
- delete(id:number){
-  return this.http.delete(this.url+id+"/")
- }
+    }
+    delete(id: number) {
+        return this.http.delete(this.url + id + "/")
+    }
 
-
-  enviarAudio(nombre: string, audioFile: File) {
-    const formData = new FormData();
-    const headers = new HttpHeaders();
-    formData.append('nombre', nombre);
-    formData.append('archivo', audioFile);
-
-    return this.http.post(this.url, FormData, { headers });
-  }
-
+    post(data: any){
+        const formData: FormData = new FormData();
+        // const fileAudio = data.audios.toString();
+        formData.append("audio", data.audios);
+        console.log( data)
+        // formData.append("idivr", data.idivr.toString())
+        return this.http.post<any>(this.url, data).subscribe()
+    }
 
 
-  postFormData(formData: FormData) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data'
-    });
+   
 
-    return this.http.post(this.url, formData, { headers });
-  }
 }

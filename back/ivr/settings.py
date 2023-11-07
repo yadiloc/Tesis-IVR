@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ ROOT_URLCONF = 'ivr.urls'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ORIGIN_WHITELIST=["http://localhost:4200"] 
 
 TEMPLATES = [
     {

@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import * as JssonToXml from 'js2xmlparser'
-import { IVRS } from 'src/app/interface/ivr';
-import { ConfirmService } from 'src/app/servicios/confirm.service';
+import {  Component,Output,EventEmitter, OnInit} from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { IvrService } from 'src/app/services/ivr.service';
+import { Ivrs } from 'src/app/models/ivr.model';
 
 
 
@@ -11,45 +10,26 @@ import { ConfirmService } from 'src/app/servicios/confirm.service';
   templateUrl: './dialogconfirm.component.html',
   styleUrls: ['./dialogconfirm.component.css']
 })
-export class DialogconfirmComponent implements AfterViewInit{
+export class DialogconfirmComponent {
+  @Output() tabla = new EventEmitter();
+  nombre = "";
+  numero = "";
+
+  arreglo!: any[];
   constructor(
-    public dialogRef: MatDialogRef<DialogconfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any, private service:ConfirmService, 
+    public dialogRef: MatDialogRef<DialogconfirmComponent>,private ivrService:IvrService
    ) {
-  }
-  
-  emptyIVRS: IVRS = {
-    mensajesBienvenida: [],
-    audios: [],
-    textos: [],
-    tiemposEspera: [],
-    transferenciasLlamada: []
-  };
-  ngAfterViewInit(): void {
-    console.log(this.service.getivr())
-   this.emptyIVRS= this.service.getivr()
-   console.log( this.emptyIVRS)
-  }
+  }  
 
   close(){
     this.dialogRef.close(true)
   }
 
-  
+  guardarIvr(){
+    let ivr = new Ivrs(this.nombre, this.numero);
+    this.ivrService.post(ivr).subscribe();
+    this.tabla.emit();
+  }
 
-  onUpload( ){
-
-    const xmlSelectedElements = JssonToXml.parse('elements', { element: this.emptyIVRS});
-   let element = document.createElement('a');
-      element.setAttribute('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(xmlSelectedElements));
-      element.setAttribute('download', 'ivr');
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    }
-
+ 
 }

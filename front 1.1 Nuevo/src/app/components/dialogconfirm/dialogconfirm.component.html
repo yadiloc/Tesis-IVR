@@ -2,19 +2,17 @@
 <div mat-dialog-content>
     
         <label for="">Nombre:</label> <br>
-        <input type="text" id="" >
+        <input type="text" id="" [(ngModel)]="nombre" >
         <br>
         <label for="">Numero asociado</label> <br>
-
-        <input type="number" id="">
         
-         <br>
-        <label for="">Fecha:</label> <br>
-        <input type="datetime-local" id="">
 
+        <input type="number" id=""  [(ngModel)]="numero">
+        
+       
 </div>
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary"(click)="close()">Close</button>
+    <button mat-flat-button (click)="close()">Close</button>
    
-    <button mat-button (click)="onUpload()" >Aceptar</button>
+    <button mat-flat-button color="primary" (click)="guardarIvr()" >Aceptar</button>
 </div>

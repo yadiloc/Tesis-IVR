@@ -69,18 +69,13 @@ mat-divider{
 .azul{
     width: 80%;
     height: 80%;
-    margin-top: 5px;
-    margin-left: 15px;
-    padding-left: 5px;
+   
     text-align: center;
 }
 #steper{
     height: 100%;
 }
-.subtitulo{
 
-   margin-top: 1%;
-}
 
 .subtl{
     font-size: medium;

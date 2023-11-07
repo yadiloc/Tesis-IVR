@@ -1,9 +1,8 @@
 import { Component, ElementRef, Inject } from '@angular/core';
 import { FormControl} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Transferencia } from 'src/app/models/transferencia';
 @Component({
   selector: 'app-transferencia',
   templateUrl: './transferencia.component.html',
@@ -20,30 +19,36 @@ export class TransferenciaComponent {
   selectedFile: File | undefined;
   change: boolean=true;
   constructor(public  dialogRef: MatDialogRef<TransferenciaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    @Inject(MAT_DIALOG_DATA) public  numeroTransfer: Transferencia,
   ) {
 
   }
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
+  // ngOnInit() {
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map(value => this._filter(value || '')),
+  //   );
+  // }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
   close(){
     this.stopAudio();
     this.dialogRef.close(true)
   }
   //Numero cell verificarlo
+
+
+  numeroTelf!:string
+  tiempoEspera!: number
+  melodia !:File
+  
   revisarEstado(){
     console.log("entro funcion");
-       if(this.data.audiodata!==undefined && this.data.numerocell!== undefined &&  this.data. tiempoespera!== undefined ){
+       if(this.numeroTransfer.melodia!==undefined && this. numeroTransfer. numeroTelf!== undefined &&  this. numeroTransfer. tiempoEspera!== undefined ){
         console.log("entro en if");
         this.change=!this.change
         console.log("cambio aqui");

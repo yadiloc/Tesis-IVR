@@ -17,7 +17,7 @@ const routes: Routes = [
   },
  
   {
-    path:"menu",
+    path:"menu/:id",
     component:MenuivrComponent,
   },
  

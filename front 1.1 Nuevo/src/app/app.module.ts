@@ -37,6 +37,12 @@ import { ElimDiagComponent } from './components/home/tablaivr/elim-diag/elim-dia
 import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-diag.component';
 import { AudioService } from './services/audio.service';
 import { TextoService } from './services/texto.service';
+import { ElimanarparamsComponent } from './components/menuivr/elimanarparams/elimanarparams.component';
+import { EditarelemntComponent } from './components/menuivr/editarelemnt/editarelemnt.component';
+import { AudiopruebaComponent } from './components/menuivr/audioprueba/audioprueba.component';
+
+
+
 
 
 
@@ -56,7 +62,10 @@ import { TextoService } from './services/texto.service';
     DialogconfirmComponent,
     ElimDiagComponent,
     ModfDiagComponent,
-  
+    ElimanarparamsComponent,
+    EditarelemntComponent,
+    AudiopruebaComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -82,6 +91,7 @@ import { TextoService } from './services/texto.service';
     MatAutocompleteModule,
     MatListModule,
     HttpClientModule,
+    
     
   ],
   providers: [AudioService, TextoService],

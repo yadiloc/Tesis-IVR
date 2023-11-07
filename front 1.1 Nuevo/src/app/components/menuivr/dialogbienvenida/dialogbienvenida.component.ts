@@ -2,7 +2,9 @@ import { Component, ElementRef, Inject } from '@angular/core';
 import {  FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Audios } from 'src/app/models/audio';
+import { Bienvenida } from 'src/app/models/bienvenida';
+import { Texto } from 'src/app/models/texto';
 @Component({
   selector: 'app-dialogbienvenida',
   templateUrl:'./dialogbienvenida.component.html',
@@ -20,32 +22,35 @@ export class DialogbienvenidaComponent {
    selectedFile: File | undefined;
   constructor(
     public dialogRef: MatDialogRef<DialogbienvenidaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any,
+    @Inject(MAT_DIALOG_DATA) public bienvenida:Bienvenida
   ) {
   }
-  ngOnInit() {
-    console.log(this.data.texto,this.data.dataaudio)
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
+  // ngOnInit() {
+  //   console.log(this.data.texto,this.data.dataaudio)
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map(value => this._filter(value || '')),
+  //   );
+  // }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
 
     close(){
       this.stopAudio();
       this.dialogRef.close(true)
     }
+
+    mess: string = ""
+    musica!: File
     activar(){
-      if(this.data.texto!==undefined && this.data.audiodata===''){
+      if(this.bienvenida.mess!==undefined && this.bienvenida.musica === undefined){
       this.activo=!this.activo
       }
-      else if(this.data.texto==='' && this.data.audiodata!==undefined){
+      else if(this.bienvenida.mess ===undefined && this.bienvenida.musica!== undefined){
       this.activo=!this.activo
       }
       else{
@@ -90,6 +95,6 @@ export class DialogbienvenidaComponent {
         this.audio = undefined!;
       }
     }
-    
+
 
 }

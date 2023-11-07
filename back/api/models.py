@@ -9,40 +9,36 @@ class Ivr (models.Model):
    
 
 class Audio (models.Model):
-    audios= models.FileField(upload_to='audios/')
-    nombre = models.CharField(max_length=100)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
- 
-    
+    audios= models.FileField(upload_to="audio/")
+    idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
 
 class Texto (models.Model):
-    textos = models.CharField(max_length=400)
-    idtxt=models.ForeignKey(Ivr, on_delete=models.CASCADE)
-    
-
-class Bienvenida(models.Model):
-    audio = models.FileField(upload_to="audio/")
-    textos = models.CharField(max_length=400)
-    idbienv=models.ForeignKey(Ivr, on_delete=models.CASCADE)
+    contenido = models.CharField(max_length=400)
+    idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
     
 
 class Transferencia(models.Model):
     numeroTelf=models.CharField(max_length=10)
     tiempoEspera=models.IntegerField()
-    audios=models.FileField(upload_to="audio/")
-    idllamda=models.ForeignKey(Ivr, on_delete=models.CASCADE)
+    melodia=models.FileField(upload_to= "audio/" )
+    idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
     
 
 class TiempoEspera(models.Model):
     tiempo=models.IntegerField
     idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
-    
+
+class Bienvenida(models.Model):
+    mess=models.CharField( blank=True, null=True , max_length=250)
+    musica=models.FileField(upload_to= "bienvenida/",blank=True,  null=True )
+    idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
+      
     
 class Consulta (models.Model):
     datoBusqueda=models.CharField
     datoRespuesta=models.CharField
     nombreTabla=models.CharField
-    idtime=models.ForeignKey(Ivr, on_delete=models.CASCADE)
+    idivr=models.ForeignKey(Ivr, on_delete=models.CASCADE)
 
 
 

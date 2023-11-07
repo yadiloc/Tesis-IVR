@@ -1,15 +1,15 @@
-<h1 mat-dialog-title> Transferencia de llamada</h1>
+
 <div mat-dialog-content>
 
   <mat-tab-group>
 
-    <mat-tab label="">
+    <mat-tab label="Transferencia de llamada">
       <mat-tab-group>
         <mat-tab label="# Telefono">
           <div class="custom-tab">
             <h4 mat-dialog-title> Introduzca el número deseado</h4>
 
-            <input type="tel"  [(ngModel)]="data.numerocell" (change)="revisarEstado()">
+            <input type="tel"  [(ngModel)]="numeroTransfer.numeroTelf" (change)="revisarEstado()">
           </div>
         </mat-tab>
 
@@ -19,7 +19,7 @@
             <h4 mat-dialog-title> Indique que tiempo tiene que transcurrir antes de finalizar la llamada</h4>
             <label for="">Introduzca el tiempo de espera</label>
 
-            <input type="number" id="" [(ngModel)]="data.tiempoespera" (change)="revisarEstado()">
+            <input type="number" id="" [(ngModel)]="numeroTransfer.tiempoEspera" (change)="revisarEstado()">
           </div>
         </mat-tab>
         
@@ -27,8 +27,8 @@
           <div class="custom-tab">
             <button type="button" mat-raised-button (click)="fileInput.click()" class="filebuton">Choose File</button>
             <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file"
-              [(ngModel)]="data.audiodata">
-            <h4>{{data.audiodata}}</h4>
+              [(ngModel)]="numeroTransfer.melodia">
+            <h4>{{numeroTransfer.melodia}}</h4>
             <div class="controlsaudio" *ngIf="variablenula">
               <button mat-raised-button color="primary" (click)="playAudio()" [disabled]="!controlaudio"><svg
                   xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -54,7 +54,7 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-flat-button color="primary" (click)="close()">Close</button>
+  <button mat-button  (click)="close()">Close</button>
 
-  <button mat-button [mat-dialog-close]="data" (click)="stopAudio()" [disabled]="change"cdkFocusInitial>Aceptar</button>
+  <button mat-flat-button color="primary"  [mat-dialog-close]="numeroTransfer" (click)="stopAudio()" [disabled]="change">Aceptar</button>
 </div>

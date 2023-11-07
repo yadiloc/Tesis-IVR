@@ -2,11 +2,16 @@ from rest_framework import serializers
 from  .models import *
 
 
-
-class IvrSerializer(serializers.ModelSerializer):
+class  AudioSerializer (serializers.ModelSerializer):
     class Meta:
-        model=Ivr
+        model=Audio
         fields="__all__"
+        
+class IvrSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Ivr
+        fields = '__all__'
         
 
         
@@ -15,19 +20,11 @@ class  ConsultaSerializer(serializers.ModelSerializer):
         model=Consulta
         fields="__all__"
 
-class  AudioSerializer (serializers.ModelSerializer):
-    class Meta:
-        model=Audio
-        fields="__all__"
+
 
 class TextoSerializer(serializers.ModelSerializer):
     class Meta:
         model=Texto
-        fields="__all__"
-
-class  BienvenidaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Bienvenida
         fields="__all__"
 
 class  TransferenciaSerializer(serializers.ModelSerializer):
@@ -41,8 +38,10 @@ class  TiempoEsperaSerializer(serializers.ModelSerializer):
         fields="__all__"
         
         
-        
-        
+class BienvenidaSerializer( serializers.ModelSerializer):
+    class Meta:
+        model=Bienvenida
+        fields="__all__"
         
 
      

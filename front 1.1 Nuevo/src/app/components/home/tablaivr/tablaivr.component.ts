@@ -1,18 +1,19 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IvrService } from 'src/app/services/ivr.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ElimDiagComponent } from './elim-diag/elim-diag.component';
 import { ModfDiagComponent } from './modf-diag/modf-diag.component';
 import { Ivrs } from 'src/app/models/ivr.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { IVRS } from 'src/app/interface/ivr';
 
 
 @Component({
   selector: 'app-tablaivr',
   templateUrl: './tablaivr.component.html',
   styleUrls: ['./tablaivr.component.css'],
-  // standalone: true,
-  // imports: [MatTableModule],
 })
 
 export class TablaivrComponent implements OnInit {
@@ -23,12 +24,14 @@ export class TablaivrComponent implements OnInit {
 
   }
   displayedColumns: string[] = ['id','nombre', 'numeroAsociado','fecha', 'acciones'];
+ 
+ 
 
 
   ngOnInit(): void {
     this.listarIvr();
-  }
-
+    }
+  
   listarIvr(): void{
    
    this.ivrService.getList().subscribe( element => {

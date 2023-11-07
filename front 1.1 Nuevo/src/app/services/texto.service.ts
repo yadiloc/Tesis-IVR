@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { Texto } from "../models/texto";
 
 
 @Injectable({
@@ -20,7 +21,7 @@ getList():Observable<any>{
  }
 
 
-  enviarTexto(data:string) {
+  enviarTexto(data:Texto) {
     return this.http.post(this.url, data);
   }
 }

@@ -4,6 +4,7 @@ import { DialogtextoComponent } from '../dialogtexto/dialogtexto.component';
 import { Ivr } from '../menuivr.component';
 import { FormControl, } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
+import { TiempoEspera } from 'src/app/models/tiempoEspera';
 
 @Component({
   selector: 'app-tiempoespera',
@@ -17,27 +18,29 @@ export class TiempoesperaComponent {
   estado:boolean=true;
   constructor(
     public dialogRef: MatDialogRef<TiempoesperaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:Ivr,) {}
+    @Inject(MAT_DIALOG_DATA) public  timemensaje:TiempoEspera,) {}
     
   close(){
     this.dialogRef.close(true)
   }
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-  }
+  // ngOnInit() {
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map(value => this._filter(value || '')),
+  //   );
+  // }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
+  //   return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  // }
   //Validar la etrada de numeros 
+
+  tiempo!:number;
   evaluar() {
     console.log("estaentrando en la funcion")
-    if (this.data.tiempoespera!== undefined ) {
+    if (this. timemensaje !== undefined ) {
         this.estado = !this.estado
     }
   

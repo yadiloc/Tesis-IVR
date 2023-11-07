@@ -2,7 +2,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog} from '@angular/material/dialog';
-import { AudioService } from 'src/app/services/audio.service';
+import { DialogconfirmComponent } from '../dialogconfirm/dialogconfirm.component';
+import { TablaivrComponent } from './tablaivr/tablaivr.component';
 
 
 
@@ -19,9 +20,10 @@ export class HomeComponent  implements AfterViewInit {
   audios: any;
   textos: any;
   texto: any;
-  constructor( private observer: BreakpointObserver, private cd: ChangeDetectorRef, public dialog: MatDialog,public dialogo: MatDialog, private audioService: AudioService) {
+  constructor( private observer: BreakpointObserver, private cd: ChangeDetectorRef, public dialog: MatDialog,public dialogo: MatDialog) {
   
   }
+  
 
  audio = new Audio();
 
@@ -46,7 +48,21 @@ export class HomeComponent  implements AfterViewInit {
     })
     this.cd.detectChanges();
   }
-
+  @ViewChild(TablaivrComponent) hijo!:TablaivrComponent ;
+  guardar() {
+  
+    const dialogRef = this.dialog.open(DialogconfirmComponent, {
+  
+      width: '500px',
+    });
+    dialogRef.componentInstance.tabla.subscribe(()=>{
+      this.hijo.listarIvr();
+      console.log("no lo hace")
+      dialogRef.close()
+    })
+  
+  }
+ 
 }
 
 
