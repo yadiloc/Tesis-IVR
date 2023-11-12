@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Texto } from 'src/app/models/texto';
+
 @Component({
   selector: 'app-dialogtexto',
   templateUrl: './dialogtexto.component.html',
@@ -8,13 +9,12 @@ import { Texto } from 'src/app/models/texto';
 })
 export class DialogtextoComponent {
 
-  // myControl = new FormControl('');
-  // options: string[] = ['One', 'Two', 'Three'];
-  // filteredOptions: Observable<string[]> | undefined;
   habilitar: boolean=true;
   constructor(
     public dialogRef: MatDialogRef<DialogtextoComponent>,
     @Inject(MAT_DIALOG_DATA) public   textomensaje:Texto,
+  
+   
   ) {
   
   }
@@ -44,5 +44,7 @@ export class DialogtextoComponent {
         this.habilitar=true
     }
     }
+
+ 
 }
 

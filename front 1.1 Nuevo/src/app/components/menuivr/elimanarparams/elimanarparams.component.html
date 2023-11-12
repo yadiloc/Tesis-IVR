@@ -1,8 +1,12 @@
 <h2 mat-dialog-title>Confirmación</h2>
 <div mat-dialog-content>
     Esta seguro de eliminar este archivo?
+
+
+
+  <div mat-dialog-actions  style="max-height: 200px;">
+    <button mat-button (click)="cancelar()" style="margin-left: 9px;">Cancelar</button>
+    <button mat-flat-button color="primary"  (click)="confirmar()"  style="margin-right:15px;">Confirmar</button>
   </div>
-<mat-dialog-actions>
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-flat-button color="primary" (click)="confirmar()">Confirmar</button>
-</mat-dialog-actions>
+</div> 
+  

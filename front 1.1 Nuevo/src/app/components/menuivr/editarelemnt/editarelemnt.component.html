@@ -1,12 +1,19 @@
-<h2 mat-dialog-title>Modificar Elemento</h2>
-<mat-dialog-content>
-  <form>
-    <!-- Representar los campos del elemento que deseas modificar -->
-    <input name="campo1" [(ngModel)]="nuevoValor.campo1" [ngModelOptions]="{standalone: true}" placeholder="Campo 1">
-    <!-- ... -->
-  </form>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-button color="primary" (click)="guardarCambios()">Guardar Cambios</button>
-</mat-dialog-actions>
+
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="Mensaje">
+      <div class="custom-tab">
+        <mat-form-field class="example-full-width">
+          <mat-label>Mensaje</mat-label>
+          <textarea matInput placeholder="Gracias por llamar" [(ngModel)]="textomensaje.contenido" (change)="activar()"></textarea>
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button  (click)="close()">Close</button>
+
+  <button mat-flat-button color="primary" [mat-dialog-close]="textomensaje" [disabled]="habilitar">Aceptar</button>
+</div>

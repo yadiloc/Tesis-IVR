@@ -22,4 +22,9 @@ getList():Observable<Ivrs[]>{
     return this.http.post(this.url, data)
  }
 
+ 
+ 
+ update( data:any){
+    return this.http.put(this.url+data.id+"/", data)
+  }
 }

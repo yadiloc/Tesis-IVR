@@ -1,10 +1,12 @@
 export class TiempoEspera{
-    tiempo: number;
-    idIvr: number;
+    id:number;
+    idivr: number;
+    tiempo: string;
     
-    constructor(tiempo:number, idIvr:number){
-        this.tiempo=tiempo,
-        this.idIvr=idIvr
+    constructor(id:number, idivr:number,  tiempo:string,){
+        this.id=id,
+        this.idivr=idivr,
+        this.tiempo=tiempo
     }
    
  

@@ -5,7 +5,7 @@ from  .models import *
 class  AudioSerializer (serializers.ModelSerializer):
     class Meta:
         model=Audio
-        fields="__all__"
+        fields='__all__'
         
 class IvrSerializer(serializers.ModelSerializer):
 
@@ -41,6 +41,11 @@ class  TiempoEsperaSerializer(serializers.ModelSerializer):
 class BienvenidaSerializer( serializers.ModelSerializer):
     class Meta:
         model=Bienvenida
+        fields="__all__"
+
+class IvrAgregationSerializer( serializers.ModelSerializer):
+    class Meta:
+        model=IvrAgregation
         fields="__all__"
         
 

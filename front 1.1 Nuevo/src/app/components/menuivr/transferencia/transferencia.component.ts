@@ -48,7 +48,7 @@ export class TransferenciaComponent {
   
   revisarEstado(){
     console.log("entro funcion");
-       if(this.numeroTransfer.melodia!==undefined && this. numeroTransfer. numeroTelf!== undefined &&  this. numeroTransfer. tiempoEspera!== undefined ){
+       if( this. numeroTransfer. numeroTelf!== undefined &&  this. numeroTransfer. tiempoEspera!== undefined ){
         console.log("entro en if");
         this.change=!this.change
         console.log("cambio aqui");

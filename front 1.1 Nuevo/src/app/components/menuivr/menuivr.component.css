@@ -15,7 +15,7 @@ margin-top: 50%;
 
 
 mat-toolbar{
-    background:#99E89D;
+    background:#98ff9f;
     color: black;
   
 }
@@ -23,7 +23,7 @@ mat-toolbar{
 mat-sidenav{
     margin-left: 5px;
     border-right: none;
-    background-color:#99E89D ;
+    background-color:#98ff9f ;
     border-radius: 10px;
     padding: 16px;
     text-align: center;

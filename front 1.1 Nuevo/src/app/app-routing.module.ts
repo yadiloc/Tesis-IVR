@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MenuivrComponent } from './components/menuivr/menuivr.component';
+import { EdicionComponent } from './components/menuivr/edicion/edicion.component';
 
 
 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path:"menu/:id",
     component:MenuivrComponent,
+  },
+  {
+    path:"editar/:id",
+    component:EdicionComponent,
   },
  
 ];

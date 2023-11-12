@@ -28,7 +28,15 @@ export class AudioService {
         return this.http.post<any>(this.url, data).subscribe()
     }
 
+    getAudio(idivr: number): Observable<Audios[]> {
+        console.log(idivr)
+        return this.http.get<Audios[]>(this.url + '?llave_foranea=' + idivr);
+    
+      }
 
+    update( data:any){
+        return this.http.put(this.url+data.id+"/", data)
+      }
    
 
 }

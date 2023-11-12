@@ -1,14 +1,16 @@
 export class  Transferencia{
+    id:number
     numeroTelf:string
     tiempoEspera: number
     melodia:File
-    idIvr:number
+    idivr:number
     
-    constructor(tiempoEspera:number, idIvr:number,  numeroTelf: string, melodia:File){
+    constructor(  id:number,  numeroTelf: string, tiempoEspera:number,  melodia:File, idivr:number ){
+        this.id=id
         this.numeroTelf=numeroTelf,
         this.tiempoEspera=tiempoEspera,
         this.melodia=melodia,
-        this.idIvr=idIvr
+        this.idivr=idivr
        
      
 

@@ -25,8 +25,8 @@
         </mat-tab>
         <mat-tab label="Audio">    
             <div class="custom-tab-audio" >
-            <button type="button" mat-raised-button (click)="fileInput.click()" class="filebuton">Escoge un archivo</button>
-            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" [(ngModel)]="bienvenida.musica" >
+            <button type="button" mat-raised-button (click)="fileInput.click()" class="filebuton" for="archivoAudio">Escoge un archivo</button>
+            <input  hidden (change)="onFileSelected($event)" #fileInput type="file" id="archivoAudio" [(ngModel)]="bienvenida.musica" >
                 <h4>{{bienvenida.musica}}</h4>
                 <div class="controlsaudio" *ngIf="variablenula">
                 <button mat-raised-button color="primary" (click)="playAudio()"[disabled]="!controlaudio"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">

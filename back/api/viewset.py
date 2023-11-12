@@ -10,6 +10,7 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.decorators import api_view
 from rest_framework.parsers import MultiPartParser, JSONParser
 
+
 class AudioViewSet(viewsets.ModelViewSet):
     queryset=Audio.objects.all()
     serializer_class=AudioSerializer
@@ -37,6 +38,10 @@ class TextoViewSet(viewsets.ModelViewSet):
     queryset=Texto.objects.all()
     serializer_class=TextoSerializer
     
+# def list(self, request, pk=None):
+#         queryset = Texto.objects.filter(llave_foranea=pk)
+#         serializer = TextoSerializer(queryset, many=True)
+#         return Response(serializer.data)
     
 class TransferenciaViewSet(viewsets.ModelViewSet):
     queryset=Transferencia.objects.all()
@@ -49,3 +54,7 @@ class TiempoEsperaViewSet(viewsets.ModelViewSet):
 class BienvenidaViewSet(viewsets.ModelViewSet):
     queryset=Bienvenida.objects.all()
     serializer_class=BienvenidaSerializer
+    
+class IvrAgregationViewSet(viewsets.ModelViewSet):
+    queryset=IvrAgregation.objects.all()
+    serializer_class=IvrAgregationSerializer

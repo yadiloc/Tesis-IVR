@@ -37,9 +37,10 @@ import { ElimDiagComponent } from './components/home/tablaivr/elim-diag/elim-dia
 import { ModfDiagComponent } from './components/home/tablaivr/modf-diag/modf-diag.component';
 import { AudioService } from './services/audio.service';
 import { TextoService } from './services/texto.service';
-import { ElimanarparamsComponent } from './components/menuivr/elimanarparams/elimanarparams.component';
 import { EditarelemntComponent } from './components/menuivr/editarelemnt/editarelemnt.component';
 import { AudiopruebaComponent } from './components/menuivr/audioprueba/audioprueba.component';
+import { EdicionComponent } from './components/menuivr/edicion/edicion.component';
+import { EliminarComponent } from './components/menuivr/edicion/eliminar/eliminar.component';
 
 
 
@@ -62,9 +63,10 @@ import { AudiopruebaComponent } from './components/menuivr/audioprueba/audioprue
     DialogconfirmComponent,
     ElimDiagComponent,
     ModfDiagComponent,
-    ElimanarparamsComponent,
     EditarelemntComponent,
     AudiopruebaComponent,
+    EdicionComponent,
+    EliminarComponent,
  
   ],
   imports: [

@@ -1,5 +1,6 @@
 import { Component, Inject  } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Texto } from 'src/app/models/texto';
 
 @Component({
   selector: 'app-editarelemnt',
@@ -7,23 +8,29 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./editarelemnt.component.css']
 })
 export class EditarelemntComponent {
-  nuevoValor: any;
+  habilitar: boolean=true;
 
   constructor(
     public dialogRef: MatDialogRef<EditarelemntComponent>,
-    @Inject (MAT_DIALOG_DATA) public elementoActual: any,
+    @Inject (MAT_DIALOG_DATA) public textomensaje: Texto,
   ) {
-    this.nuevoValor = { ...elementoActual }; // Inicializar el nuevo valor con una copia del elemento actual
+    
   }
 
-  guardarCambios(): void {
-    this.dialogRef.close(this.nuevoValor);
+  contenido:string="";
+  activar(){
+    if(this.textomensaje!==undefined){ 
+      this.habilitar=!this.habilitar
+    }
+    else{
+        this.habilitar=true
+    }
+    }
+  
+    close(){
+      this.dialogRef.close(true)
+    }
    
-  }
-
-  cancelar(): void {
-    this.dialogRef.close(null);
-  }
 
 
 }

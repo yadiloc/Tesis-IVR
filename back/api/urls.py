@@ -11,6 +11,7 @@ router.register('audio', AudioViewSet)
 router.register('texto', TextoViewSet)
 router.register('transferencia', TransferenciaViewSet)
 router.register('bienvenida', BienvenidaViewSet)
+router.register('agregation', IvrAgregationViewSet)
 urlpatterns = router.urls
 
 

@@ -21,4 +21,15 @@ getList():Observable<any>{
  post(data:Bienvenida){
   return this.http.post(this.url, data)
 }
+
+getBienvenida(idivr: number): Observable<Bienvenida[]> {
+    console.log(idivr)
+    return this.http.get<Bienvenida[]>(this.url + '?llave_foranea=' + idivr);
+
+  }
+
+  update(data:Bienvenida){
+    console.log(data)
+    return this.http.put(this.url + data.id + "/", data)
+  }
 }

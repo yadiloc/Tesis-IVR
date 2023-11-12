@@ -15,14 +15,13 @@ import { TextoService } from 'src/app/services/texto.service';
 import { TiempoEsperaService } from 'src/app/services/tiempoEspera.service';
 import { TransferenciaService } from 'src/app/services/transferencia.service';
 import { Texto } from 'src/app/models/texto';
-import { ElimanarparamsComponent } from './elimanarparams/elimanarparams.component';
 import { Audios } from 'src/app/models/audio';
 import { TiempoEspera } from 'src/app/models/tiempoEspera';
-import { Transferencia } from 'src/app/models/transferencia';
-import { strings } from '@material/icon-button';
-import { isEmpty } from 'rxjs/internal/operators/isEmpty';
+import { Transferencia } from 'src/app/models/transferencia';                                                         
 import { BienvenidaService } from 'src/app/services/bienvenida.service';
 import { Bienvenida } from 'src/app/models/bienvenida';
+import { IvrAgregationService } from 'src/app/services/ivragregation.service';
+import { ElimanarparamsComponent } from './elimanarparams/elimanarparams.component';
 
 
 
@@ -81,7 +80,8 @@ export class MenuivrComponent implements AfterViewInit {
     private audioService: AudioService,
     private textoservice: TextoService,
     private tiempoEsperaService: TiempoEsperaService,
-    private bienvenidaservice: BienvenidaService
+    private bienvenidaservice: BienvenidaService,
+    private agregation:IvrAgregationService
 
   ) {
 
@@ -98,9 +98,8 @@ export class MenuivrComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.mostrar.push(result)
-      console.log(this.mostrar)
+     
 
     });
   }
@@ -115,7 +114,7 @@ export class MenuivrComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.mostrar.push(result)
-      console.log(this.mostrar)
+     
     });
   }
   tiempo!: number
@@ -129,7 +128,7 @@ export class MenuivrComponent implements AfterViewInit {
       if (result != undefined) {
         //   this.emptyIVRS.tiemposEspera.push(result)
         this.mostrar.push(result)
-        console.log(this.mostrar)
+      
 
       }
     });
@@ -146,10 +145,9 @@ export class MenuivrComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != true) {
-        console.log('aaaarrrrr', result)
         // this.emptyIVRS.transferenciasLlamada.push(result)
         this.mostrar.push(result)
-        console.log(this.mostrar)
+      
       }
 
     });
@@ -159,7 +157,7 @@ export class MenuivrComponent implements AfterViewInit {
 
     const dialogRef = this.dialog.open(DialogtextoComponent, {
       width: '500px',
-      data: { contenido: this.textomensaje }
+      data: { contenido: this.textomensaje}
     })
     dialogRef.afterClosed().subscribe(result => {
       // this.emptyIVRS.textos.push(result)
@@ -214,20 +212,21 @@ export class MenuivrComponent implements AfterViewInit {
         this.sidenav.mode = 'side';
         this.sidenav.open();
       }
-
-
     })
     this.cd.detectChanges();
   }
   // este mtodo es para eliminar de la vista
   openDialog(indice: number) {
-    console.log(indice)
-    const dialogRef = this.dialog.open(ElimanarparamsComponent);
+ 
+    const dialogRef = this.dialog.open(ElimanarparamsComponent,{
+      width: '300px',
+    });
+     
 
     dialogRef.afterClosed().subscribe(confirmado => {
       if (confirmado) {
         this.confirmarEliminacion(indice);
-        console.log(indice)
+       
       }
     });
   }
@@ -245,6 +244,11 @@ export class MenuivrComponent implements AfterViewInit {
 
   // Este metdo es para guardar en bd
   id!: number;
+  // idaudio!:number
+  // idtexto!:number
+  // idbienvenida!:number
+  // idtiempo!:number
+  // idtransferencia!:number
 
   guardarBd() {
     this.activatedRoute.params.subscribe(params => {
@@ -263,26 +267,20 @@ export class MenuivrComponent implements AfterViewInit {
         }
         if (element.audios !== undefined) {
           element.idivr = this.id;
-          console.log('o0o0o00o0o',element.audios)
           this.audioService.post(element.audios)
         }
         
-        if (element.melodia !== undefined && element.numeroTelf !== undefined && element.tiempoEspera !== undefined) {
+        if ( element.numeroTelf !== undefined && element.tiempoEspera !== undefined) {
           element.idivr = this.id;
           this.transferenciaService.post(element).subscribe()
-          console
         }
         if (element.musica !== undefined && element.mess === undefined) {
           element.idivr = this.id;
           this.bienvenidaservice.post(element).subscribe()
-
-
         }
         else if (element.musica === undefined && element.mess !== undefined) {
           element.idivr = this.id;
           this.bienvenidaservice.post(element).subscribe()
-
-
         }
       })
     });
@@ -302,8 +300,9 @@ export class MenuivrComponent implements AfterViewInit {
     element.click();
 
     document.body.removeChild(element);
-
+  
   }
+  
 
 
 
