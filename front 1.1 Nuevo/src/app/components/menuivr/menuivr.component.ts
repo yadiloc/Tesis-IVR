@@ -44,7 +44,6 @@ export interface Ivr {
 export class MenuivrComponent implements AfterViewInit {
   mostrar: any[] = [];
 
-
   menuTrigger: any;
   audiodata: string = "";
   texto!: Texto;
@@ -81,7 +80,7 @@ export class MenuivrComponent implements AfterViewInit {
     private textoservice: TextoService,
     private tiempoEsperaService: TiempoEsperaService,
     private bienvenidaservice: BienvenidaService,
-    private agregation:IvrAgregationService
+  
 
   ) {
 
@@ -219,7 +218,8 @@ export class MenuivrComponent implements AfterViewInit {
   openDialog(indice: number) {
  
     const dialogRef = this.dialog.open(ElimanarparamsComponent,{
-      width: '300px',
+      width: '400px',
+      height:'200px'
     });
      
 
@@ -244,11 +244,7 @@ export class MenuivrComponent implements AfterViewInit {
 
   // Este metdo es para guardar en bd
   id!: number;
-  // idaudio!:number
-  // idtexto!:number
-  // idbienvenida!:number
-  // idtiempo!:number
-  // idtransferencia!:number
+
 
   guardarBd() {
     this.activatedRoute.params.subscribe(params => {

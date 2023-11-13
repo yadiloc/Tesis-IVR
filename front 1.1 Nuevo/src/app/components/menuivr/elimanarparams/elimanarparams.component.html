@@ -1,12 +1,19 @@
-<h2 mat-dialog-title>Confirmación</h2>
-<div mat-dialog-content>
-    Esta seguro de eliminar este archivo?
 
+<div mat-dialog-title> <h2> Confirmar  </h2></div> 
+  <br>
+  <div mat-dialog-content>
 
-
-  <div mat-dialog-actions  style="max-height: 200px;">
-    <button mat-button (click)="cancelar()" style="margin-left: 9px;">Cancelar</button>
-    <button mat-flat-button color="primary"  (click)="confirmar()"  style="margin-right:15px;">Confirmar</button>
+    <h3>   Esta seguro de eliminar este archivo? </h3>
+   
+ 
   </div>
-</div> 
+   
+    <br>
+  
+  <div  mat-dialog-actions>
+   <button class="btn btn-danger" (click)="cancelar()" style="margin-right: 2px;" >Close</button>
+ 
+  <button   class="btn btn-primary"   (click)="confirmar()" style="margin-left: 5px;">Aceptar</button>
+ 
+  </div>
   

@@ -20,6 +20,7 @@ import { Transferencia } from 'src/app/models/transferencia';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'jquery';
 import { TiempoEspera } from 'src/app/models/tiempoEspera';
+import * as JssonToXml from 'js2xmlparser'
 
 
 @Component({
@@ -27,8 +28,9 @@ import { TiempoEspera } from 'src/app/models/tiempoEspera';
   templateUrl: './edicion.component.html',
   styleUrls: ['./edicion.component.css']
 })
-export class EdicionComponent implements OnInit{
+export class EdicionComponent implements OnInit {
 
+  mostrar: any[] = [];
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -39,7 +41,6 @@ export class EdicionComponent implements OnInit{
   numeroTransfer!: Transferencia;
   bienvenida!: Bienvenida;
   constructor(
-    private observer: BreakpointObserver,
     public dialog: MatDialog,
     private cd: ChangeDetectorRef,
     private transferenciaService: TransferenciaService,
@@ -47,89 +48,83 @@ export class EdicionComponent implements OnInit{
     private textoservice: TextoService,
     private tiempoEsperaService: TiempoEsperaService,
     private bienvenidaservice: BienvenidaService,
-    private agregation:IvrAgregationService,
     private activatedRoute: ActivatedRoute,
-  
-    ){}
-    id!:number;
-    idivr!: number;
-    lisTexto!: Texto[];
-    tiempoes!: any;
-    bienvenidaelement !:Bienvenida[];
-   audioss !:Audios[];
-   transferencia!:Transferencia[];
-    edicion: any[] = [];
-   
+
+  ) { }
+  id!: number;
+  idivr!: number;
+  lisTexto!: Texto[];
+  tiempoes!: any;
+  bienvenidaelement !: Bienvenida[];
+  audioss !: Audios[];
+  transferencia!: Transferencia[];
+  edicion: any[] = [];
+
   ngOnInit(): void {
-    this. obtenerElementos()
-    // this.observer.observe(['(max-width:800px)']).subscribe((resp: any) => {
-    //   if (resp.matches) {
-    //     this.sidenav.mode = 'over';
-    //     this.sidenav.close();
-    //   } else {
-    //     this.sidenav.mode = 'side';
-    //     this.sidenav.open();
-    //   }
-
-
-    // })
-    // this.cd.detectChanges();
+    this.obtenerElementos()
   }
-  
 
- 
+
+
   cancelar(): void {
     window.location.reload()
   }
-  
+
   bienvcontrol = "";
 
   mess: string = ""
   musica!: File
-  Bienvenida(id:number) {
+  Bienvenida(id: number) {
     const dialogRef = this.dialog.open(DialogbienvenidaComponent, {
       minHeight: '35vh',
       width: '500px',
-      data: { id:id, mess: this.bienvenida, musica: this.bienvenida, idivr:this.idivr },
+      data: { id: id, mess: this.bienvenida, musica: this.bienvenida, idivr: this.idivr },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let data:Bienvenida = new Bienvenida(id ,result.mess,result.musica,this.idivr )
-      this.bienvenidaservice.update(data).subscribe()
-      this.obtenerElementos()
+      let data: Bienvenida = new Bienvenida(id, result.mess, result.musica, this.idivr)
+      this.bienvenidaservice.update(data).subscribe(result => {
+        this.mostrar.push(data)
+        this.obtenerElementos()
+      })
+
     });
   }
 
   audios!: Audios
 
-  Audio() {
+  Audio(id: number) {
     const dialogRef = this.dialog.open(AudioComponent, {
       width: '500px',
       data: { audios: this.audiomensaje },
     });
 
     dialogRef.afterClosed().subscribe(result => {
-  
+      this.mostrar.push(data)
+      this.obtenerElementos()
     });
   }
 
 
 
   tiempo!: number
-  idIvr!:number
-  tiempoe(id:number) {
+  idIvr!: number
+  tiempoe(id: number) {
     const dialogRef = this.dialog.open(TiempoesperaComponent, {
-    
+
       width: '500px',
-          
-      data: {id:id, idivr:this.idivr , tiempo: this.timemensaje},
+
+      data: { id: id, idivr: this.idivr, tiempo: this.timemensaje },
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result, id, this.idIvr)
       if (result != undefined) {
-        let data:TiempoEspera = new TiempoEspera(id, this.idivr , result.tiempo.toString())
-        this.tiempoEsperaService.update(data).subscribe()
-        this. obtenerElementos()
+        let data: TiempoEspera = new TiempoEspera(id, this.idivr, result.tiempo.toString())
+        this.tiempoEsperaService.update(data).subscribe(result => {
+          this.mostrar.push(data)
+          this.obtenerElementos()
+
+        })
       }
     });
   }
@@ -137,123 +132,121 @@ export class EdicionComponent implements OnInit{
   numeroTelf!: string
   tiempoEspera!: number
   melodia!: File
-  transferenciaLLamada(id:number) {
+  transferenciaLLamada(id: number) {
     const dialogRef = this.dialog.open(TransferenciaComponent, {
       width: '500px',
-      data: {id:id,  numeroTelf: this.numeroTransfer, tiempoEspera: this.numeroTransfer,  melodia: this.numeroTransfer, idivr:this.idivr }
+      data: { id: id, numeroTelf: this.numeroTransfer, tiempoEspera: this.numeroTransfer, melodia: this.numeroTransfer, idivr: this.idivr }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let data:Transferencia = new Transferencia(id, result.numeroTelf , result.tiempoEspera , result.melodia , this.idivr)
-       console.log(data)
-      this.transferenciaService.update(data).subscribe()
-      this.obtenerElementos()
+      let data: Transferencia = new Transferencia(id, result.numeroTelf, result.tiempoEspera, result.melodia, this.idivr)
+      console.log(data)
+      this.transferenciaService.update(data).subscribe(result => {
+        this.mostrar.push(data)
+        this.obtenerElementos()
+      })
 
     });
   }
   contenido!: string;
- 
-  Texto(id:number) {
-      const dialogRef = this.dialog.open(DialogtextoComponent, {
-        width: '500px',
-        data: {id:id, idivr:this.idivr , contenido:this.textomensaje}
-      });
-      console.log(data )
 
-      dialogRef.afterClosed().subscribe(result => {
-      let data:Texto = new Texto(id,result.contenido,this.idivr )
-      this.textoservice.update(data).subscribe()
-      this.obtenerElementos()
+  Texto(id: number) {
+    const dialogRef = this.dialog.open(DialogtextoComponent, {
+      width: '500px',
+      data: { id: id, idivr: this.idivr, contenido: this.textomensaje }
     });
-  
-    
+    dialogRef.afterClosed().subscribe(result => {
+      let data: Texto = new Texto(id, result.contenido, this.idivr)
+      this.textoservice.update(data).subscribe(result => {
+        this.mostrar.push(data)
+        this.obtenerElementos()
+      })
+
+    });
+
+
   }
-  
- 
+
+
 
   obtenerElementos() {
     this.activatedRoute.paramMap.subscribe(params => {
-      let idPa= params.get("id")
-      if (idPa !=null){
-       this.idivr= parseInt(idPa, 10)
+      let idPa = params.get("id")
+      if (idPa != null) {
+        this.idivr = parseInt(idPa, 10)
       }
-     
-      console.log(this.idivr)
-      this.textoservice.getTexto(this.idivr).subscribe (element => {
+      this.textoservice.getTexto(this.idivr).subscribe(element => {
         this.lisTexto = element;
-        console.log(this.lisTexto)
+        this.mostrar.push(element)
       });
-      this.tiempoEsperaService.getTiempo(this.idivr).subscribe (element => {
-            this.tiempoes = element;
-            this.edicion=element;
-            console.log(this.tiempoes)
+      this.tiempoEsperaService.getTiempo(this.idivr).subscribe(element => {
+        this.tiempoes = element;
+        this.edicion = element;
+        this.mostrar.push(element)
       });
-      this.bienvenidaservice.getBienvenida(this.idivr).subscribe (element => {
+      this.bienvenidaservice.getBienvenida(this.idivr).subscribe(element => {
         this.bienvenidaelement = element;
-        this.edicion=element;
-        console.log(this.bienvenidaelement)
+        this.mostrar.push(element)
+        this.edicion = element;
       });
-      this.audioService.getAudio(this.idivr).subscribe (element => {
-    this.audioss = element;
-    this.edicion=element;
-    console.log(element)
+      this.audioService.getAudio(this.idivr).subscribe(element => {
+        this.audioss = element;
+        this.edicion = element;
+        this.mostrar.push(element)
       });
-  
-      this.transferenciaService.getTrans(this.idivr).subscribe (element => {
-    this.transferencia= element;
-    this.edicion=element;
-    console.log(this.transferencia)
-       });
+
+      this.transferenciaService.getTrans(this.idivr).subscribe(element => {
+        this.transferencia = element;
+        this.edicion = element;
+        this.mostrar.push(element)
+      });
     })
-    
-}
+
+  }
 
 
   // Aqui se implementara las eliminaciones de cada uno de los elementos
-  openDialog(tipo:string, id:number){
-        if(tipo==='texto'){
-          this.textoservice.delete(id).subscribe()
-          this. obtenerElementos()
-        }
-        else if(tipo==='ti'){
-          this.tiempoEsperaService.delete(id).subscribe()
-          this. obtenerElementos()
+  openDialog(tipo: string, id: number) {
+    if (tipo === 'texto') {
+      this.textoservice.delete(id).subscribe()
+      this.obtenerElementos()
+    }
+    else if (tipo === 'ti') {
+      this.tiempoEsperaService.delete(id).subscribe()
+      this.obtenerElementos()
 
-        }
-        else if(tipo==='bienveida'){
-          this.bienvenidaservice.delete(id).subscribe()
-          this. obtenerElementos()
+    }
+    else if (tipo === 'bienveida') {
+      this.bienvenidaservice.delete(id).subscribe()
+      this.obtenerElementos()
 
-        }
-        else if(tipo==='transferencia'){
-          this.transferenciaService.delete(id).subscribe()
-          this. obtenerElementos()
-        }
-        this. obtenerElementos()
-      }
-      // openDialogeditar(x: number) {
-      //   // console.log(x);
-      
-      //   // this.textoservice.delete(x).subscribe(data => {
-      //   //   console.log(data);
-      //   // });
-      
-      //   // this.Texto()
-      
-      //     // this.textoservice.enviarTexto().subscribe(data => {
-      //     //   console.log("aquí está la data" + data);
-      //     // });
-      
-      //     this.obtenerElementos();}
+    }
+    else if (tipo === 'transferencia') {
+      this.transferenciaService.delete(id).subscribe()
+      this.obtenerElementos()
+    }
+    if (tipo === 'audios') {
+      this.audioService.delete(id).subscribe()
+      this.obtenerElementos()
+    }
+    this.obtenerElementos()
+  }
 
-  //  Guardar(id:number){
-  //   this.textoservice.delete(id).subscribe()
-  //   this.  obtenerElementos();
+  generarXml() {
+    const xmlSelectedElements = JssonToXml.parse('elements', { element: this.mostrar });
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/xml;charset=utf-8,' + encodeURIComponent(xmlSelectedElements));
+    element.setAttribute('download', 'ivr');
 
-  //  }
-   Cancelar(){
+    element.style.display = 'none';
+    document.body.appendChild(element);
 
-   }
-      }
- 
+    element.click();
+
+    document.body.removeChild(element);
+
+  }
+
+}
+
 

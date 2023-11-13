@@ -15,25 +15,28 @@ margin-top: 50%;
 
 
 mat-toolbar{
-    background:#98ff9f;
-    color: black;
+    background:#03045E;
+    color: white;
+    height: 48px;
   
 }
 
 mat-sidenav{
     margin-left: 5px;
     border-right: none;
-    background-color:#98ff9f ;
+    /* background-color:#98ff9f ; */
+    border: solid #023E8A 1px;
     border-radius: 10px;
     padding: 16px;
     text-align: center;
+   
 }
 
 .avatar{
     margin-top: 16px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+     border-radius: 50%; 
 }
 .nombre{
     margin-top: 8px;
@@ -54,11 +57,11 @@ mat-sidenav{
     height: calc(88vh - 65px);
     border-radius: 10px;
     margin: 12px;
-    /* display:flex; */
     font-size: 2rem;
     color:black;
     align-items: center;
-    /* height: 100%; */
+    
+   
 }
 mat-divider{
     margin-top: 16px;
@@ -80,5 +83,6 @@ mat-divider{
 .subtl{
     font-size: medium;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-right: 10%;
     
 }

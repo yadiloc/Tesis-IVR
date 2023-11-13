@@ -40,7 +40,7 @@ import { TextoService } from './services/texto.service';
 import { EditarelemntComponent } from './components/menuivr/editarelemnt/editarelemnt.component';
 import { AudiopruebaComponent } from './components/menuivr/audioprueba/audioprueba.component';
 import { EdicionComponent } from './components/menuivr/edicion/edicion.component';
-import { EliminarComponent } from './components/menuivr/edicion/eliminar/eliminar.component';
+
 
 
 
@@ -66,7 +66,7 @@ import { EliminarComponent } from './components/menuivr/edicion/eliminar/elimina
     EditarelemntComponent,
     AudiopruebaComponent,
     EdicionComponent,
-    EliminarComponent,
+
  
   ],
   imports: [

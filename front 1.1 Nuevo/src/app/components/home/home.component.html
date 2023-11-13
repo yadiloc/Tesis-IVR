@@ -1,14 +1,9 @@
 <div class="barra">
   <p>
-    <mat-toolbar color="">
-
-      <button mat-icon-button *ngIf="sidenav.mode==='over'" (click)=sidenav.toggle()>
-        <mat-icon *ngIf="!sidenav.opened"> menu</mat-icon>
-        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
-
-      </button>
-
-      <span class="example-spacer"> IVR Disigner</span>
+    <mat-toolbar>
+      <!-- <span> <img class="avatar mat-elevation-z9" src="./assets/log.png"> </span> -->
+      <span> <h2 style="font-family: 'Trebuchet MS';"> Diseñador de Ivr</h2> </span> 
+      
 
     </mat-toolbar>
   </p>
@@ -17,19 +12,21 @@
 
 <!--Este es la barra lateral-->
 <mat-sidenav-container class="example-container, ml-3">
-  <mat-sidenav #sidenav="matSidenav" mode="side" opened>
-    <span> <img class="avatar mat-elevation-z20" src="./assets/log.png"> </span>
-    <mat-list>
-      <mat-list-item> <button mat-button class="menu-button" (click)="guardar()" >
-         <h3>  Add IVR  </h3>
-        </button></mat-list-item>
+<mat-sidenav #sidenav="matSidenav" mode="side" opened>
 
-      </mat-list>
   </mat-sidenav>
 
 
   <!--Pagina -->
-  <mat-sidenav-content class="px-3">
+
+  <mat-sidenav-content class="px-5">
+    
+ 
+        <button type="button"  (click)="guardar()" id="boton" class="btn btn-outline-info" style="margin-bottom: 5px;margin-left: 88%; ">Add IVR </button>
+         
+       
+
+    
     <app-tablaivr > </app-tablaivr>
    
   </mat-sidenav-content>
